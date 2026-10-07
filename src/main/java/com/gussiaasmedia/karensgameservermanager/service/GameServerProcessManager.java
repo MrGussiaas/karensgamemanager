@@ -20,7 +20,7 @@ public class GameServerProcessManager {
     private PortStack portStack = new PortStack();
     private static final Logger log = LoggerFactory.getLogger(GameServerProcessManager.class);
     private static final String SERVER_EXE =
-            "C:\\SACD_client\\Super Awesome Cool Dudes.exe";
+            "/home/ubuntu/TwoKarensServer/TwoKarensServer.x86_64";
     private final RestClient restClient;
     public GameServerProcessManager(@Value("${matchmaking.api.url}") String managerUrl) {
         this.restClient = RestClient.builder()
