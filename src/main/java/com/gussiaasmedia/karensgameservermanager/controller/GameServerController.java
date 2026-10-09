@@ -26,4 +26,9 @@ public class GameServerController {
     public Integer getNextPort(){
         return processManager.reservePort();
     }
+
+    @GetMapping("/hello")
+    public String hello() {
+        return "Hello from 2 Karens Server Manager!";
+    }
 }
