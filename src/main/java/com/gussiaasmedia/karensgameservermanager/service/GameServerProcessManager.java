@@ -44,7 +44,6 @@ public class GameServerProcessManager {
         );
         processBuilder.redirectOutput(ProcessBuilder.Redirect.DISCARD);
         processBuilder.redirectError(ProcessBuilder.Redirect.DISCARD);
-        processBuilder.redirectOutput(ProcessBuilder.Redirect.appendTo(logFile));
 
         try {
             Process newProcess = processBuilder.start();
