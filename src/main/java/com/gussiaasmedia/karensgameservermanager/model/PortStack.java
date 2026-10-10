@@ -11,7 +11,7 @@ public class PortStack
 {
     private static final Logger log = LoggerFactory.getLogger(PortStack.class);
     private static final Integer START_PORT = 27777;
-    private static final Integer PORT_RANGE = 10;
+    private static final Integer PORT_RANGE = 2;
     private List<Integer> availablePorts = new ArrayList<Integer>();
     public PortStack(){
         for(int i = START_PORT; i < (START_PORT + PORT_RANGE); i++){
