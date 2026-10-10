@@ -56,13 +56,16 @@ public class GameServerProcessManager {
             serverProcessRegistry.registerProcess(port, serverProcessModel);
             newProcess.onExit().thenAccept(p -> {
                 log.info("Unity server on port {} exited with code: {}", port, p.exitValue());
-
-                // Unregister the port automatically
-                ServerProcessModel killedServerProcessModel = serverProcessRegistry.getProcessForPort(port);
-                sendDeathSignalToAPI(killedServerProcessModel.getServerGuid());
-                portStack.returnPort(port);
-                serverProcessRegistry.unregisterProcess(port);
-
+                try {
+                    // Unregister the port automatically
+                    ServerProcessModel killedServerProcessModel = serverProcessRegistry.getProcessForPort(port);
+                    sendDeathSignalToAPI(killedServerProcessModel.getServerGuid());
+                    portStack.returnPort(port);
+                    serverProcessRegistry.unregisterProcess(port);
+                }
+                catch(Exception e){
+                    log.error("error cleaning up server process", e);
+                }
 
             });
 
