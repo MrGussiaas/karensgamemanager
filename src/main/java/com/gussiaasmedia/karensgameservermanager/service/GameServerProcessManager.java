@@ -60,11 +60,13 @@ public class GameServerProcessManager {
                     // Unregister the port automatically
                     ServerProcessModel killedServerProcessModel = serverProcessRegistry.getProcessForPort(port);
                     sendDeathSignalToAPI(killedServerProcessModel.getServerGuid());
-                    portStack.returnPort(port);
-                    serverProcessRegistry.unregisterProcess(port);
                 }
                 catch(Exception e){
                     log.error("error cleaning up server process", e);
+                }
+                finally{
+                    portStack.returnPort(port);
+                    serverProcessRegistry.unregisterProcess(port);
                 }
 
             });
