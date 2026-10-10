@@ -129,10 +129,6 @@ public class GameServerProcessManager {
                     .uri("/freeSession/{sessionGuid}", guid)
                     .retrieve()
                     .body(GameServerResponse.class);
-            System.out.println("the manager response is: " + managerResponse + " with guid: " + managerResponse.getSessionGuid());
-            if (managerResponse != null && managerResponse.getSessionGuid() != null) {
-                log.info("successfully sent the free server message to matchmaker!");
-            }
         } catch (RestClientException e) {
             log.error("Failed to reach MatchMakingAPI service: " + e);
         }
