@@ -48,6 +48,7 @@ public class GameServerProcessManager {
 
         try {
             Process newProcess = processBuilder.start();
+            log.debug("new process: " + newProcess.toString());
             GameServerResponse response = new GameServerResponse();
             ServerProcessModel serverProcessModel = new ServerProcessModel(newProcess);
             UUID uuid = UUID.randomUUID();
